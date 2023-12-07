@@ -33,11 +33,11 @@ class HomeController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            if ($user['dropdown'] == 'Admin') {
-                return view('contact.thanksAdmin');
-            }
             if ($user['dropdown'] == 'Client') {
                 return view('contact.thanks');
+            }
+            if ($user['dropdown'] == 'Admin') {
+                return view('contact.thanksAdmin');
             }
         } else {
             return view('home.index');

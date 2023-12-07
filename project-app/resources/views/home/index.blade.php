@@ -36,9 +36,9 @@
 </div>
 
 <body>
-    <div class="toast fade show position-fixed" role="alert" aria-live="assertive" aria-atomic="true" style="bottom: 490px; right: 10px; z-index: 1000;">
+    <div class="toast fade show position-fixed" role="alert" aria-live="assertive" aria-atomic="true" style="bottom: 50px; right: 10px; z-index: 1000;">
         <div class="toast-header">
-            <strong class="me-auto"> <img src="/images/logo.png" style="height:20px;width:180px;">
+            <strong class="me-auto"> <img src="/images/logo.png" style="height:40px;width:180px;">
             </strong>
             <small></small>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -150,9 +150,9 @@
                       color: #0E2431;
                       bottom: 0;">
 
-                    <h1 style="margin-right:700px; margin-top:150px;font-size:40px;">Connecting Dreams</h1>
-                    <p style="margin-right:700px ;margin-top:50px;font-size:20px">Our platform bridges the gap between scholarship providers and ambitious students. Scholarship providers can easily list their opportunities, while students can effortlessly apply and manage their documentation on our website, streamlining the path to educational success.</p>
-                    <ol class="carousel-indicators" style="top:70%">
+                    <h1 style="margin-right:700px; margin-top:50px;font-size:40px;">Connecting Dreams</h1>
+                    <p style="margin-right:550px ;margin-top:50px;font-size:20px">Our platform bridges the gap between scholarship providers and ambitious students. Scholarship providers can easily list their opportunities, while students can effortlessly apply and manage their documentation on our website, streamlining the path to educational success.</p>
+                    <ol class="carousel-indicators" style="top:60%">
                         <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></li>
                         <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></li>
                         <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></li>
@@ -172,9 +172,9 @@
                       height: 100%;
                       color: #0E2431;
                       bottom: 0;">
-                    <h1 style="margin-right:500px;margin-top:150px;font-size:40px;">Fueling Opportunities for All</h1>
-                    <p style="margin-right:700px ;margin-top:50px;font-size:20px">Our inclusive platform invites scholarship providers to showcase their offerings and students to seize them. Providers can post scholarships, students can apply efficiently, and all documentation is managed seamlessly within our website. Join us on the journey to excellence.</p>
-                    <ol class="carousel-indicators" style="top:70%">
+                    <h1 style="margin-right:500px;margin-top:50px;font-size:40px;">Fueling Opportunities for All</h1>
+                    <p style="margin-right: 550px; ;margin-top:50px;font-size:20px">Our inclusive platform invites scholarship providers to showcase their offerings and students to seize them. Providers can post scholarships, students can apply efficiently, and all documentation is managed seamlessly within our website. Join us on the journey to excellence.</p>
+                    <ol class="carousel-indicators" style="top:60%">
                         <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" aria-label="Slide 1"></li>
                         <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="active" aria-current="true" aria-label="Slide 2"></li>
                         <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></li>
@@ -194,9 +194,9 @@
                       height: 100%;
                       color: #0E2431;
                       bottom: 0;">
-                    <h1 style="margin-right:700px;margin-top:150px;font-size:40px;">Empowering Education</h1>
-                    <p style="margin-right:700px ;margin-top:50px;font-size:20px">Our dynamic platform unites scholarship providers and students on a shared mission. Providers post scholarships, students apply seamlessly, and all documentation resides in one convenient place on our website. Join our community, and together, we empower educational aspirations.</p>
-                    <ol class="carousel-indicators" style="top:70%">
+                    <h1 style="margin-right:700px;margin-top:50px;font-size:40px;">Empowering Education</h1>
+                    <p style="margin-right:550px ;margin-top:50px;font-size:20px">Our dynamic platform unites scholarship providers and students on a shared mission. Providers post scholarships, students apply seamlessly, and all documentation resides in one convenient place on our website. Join our community, and together, we empower educational aspirations.</p>
+                    <ol class="carousel-indicators" style="top:60%">
                         <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" aria-label="Slide 1"></li>
                         <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></li>
                         <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" class="active" aria-current="true" aria-label="Slide 3"></li>

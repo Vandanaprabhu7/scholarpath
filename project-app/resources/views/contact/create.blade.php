@@ -24,24 +24,23 @@
     </div>
 </nav>
 <!-- Navigation ends -->
-<div class="w3-cursive" style="text-align:center;font-size:200%">REGISTRATION FORM</div>
 <div class="background-container">
-    <div class="login-form" style="padding-top:70px;top:40%;">
+    <div class="login-form" style="padding-top:70px;top:43%;">
+        <h2 style="text-align: center; color: #333;">SignUp Form</h2><br>
         <a href="/" class="close-button" style="top:3%;text-decoration: none;">x</a>
         <form action="{{ route('register') }}" method="post" class="reg-form">
             {!! csrf_field() !!}
-            <div class="custom-form">
-                <div class="form-group">
+            <div class="custom-form row">
+                <div class="form-group col-md-6">
                     <label for="fname">First Name</label>
                     <input type="text" name="fname" id="fname" class="form-control">
-                </div><br>
-                <div class="form-group">
+                </div>
+                <div class="form-group col-md-6">
                     <label for="lname">Last Name</label>
                     <input type="text" name="lname" id="lname" class="form-control">
                 </div>
             </div>
             <br>
-
             <div class="form-group">
                 <label for="semail">Email</label>
                 <input type="email" name="semail" id="semail" class="form-control">

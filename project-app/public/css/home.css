@@ -45,7 +45,7 @@
     bottom: 0;
     display: flex;
     justify-content: center; /* Center horizontally */
-    background-color: rgb(26, 196, 219,0.5); /* Set the background color of the indicators to black */
+    background-color: #4070f4; /* Set the background color of the indicators to black */
     border-radius: 12px;
     width: 150px;
     height: 30px;
@@ -59,7 +59,7 @@
 }
 
 .carousel-indicators li.active, .carousel-indicators li:hover {
-  background-color: blue; /* Set the background color to blue on hover or when active */
+  background-color: white; /* Set the background color to blue on hover or when active */
 }
 
 /* apply section */
@@ -662,7 +662,7 @@ body {
 /* styles.css */
 .background-container::before {
     content: "";
-    background-image: url('/images/bg.png'); /* Set the path to your background image */
+    background-image: url(https://images.all-free-download.com/images/graphiclarge/blue_abstract_background_310971.jpg); /* Set the path to your background image */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

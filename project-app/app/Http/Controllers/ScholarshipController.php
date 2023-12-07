@@ -60,13 +60,18 @@ class ScholarshipController extends Controller
     }
     public function apply($ptoken, $id)
     {
-        $provider = User::where('token', $ptoken)->first();
-        $scl = Pvtscl::where('id', $id)->first();
-        if ($scl['token'] == $ptoken) {
-            return view('scholarships.applications', ['scl' => $scl]);
+        $user = Auth::user();
+        if ($user['dropdown'] == 'Client') {
+            $provider = User::where('token', $ptoken)->first();
+            $scl = Pvtscl::where('id', $id)->first();
+            if ($scl['token'] == $ptoken) {
+                return view('scholarships.applications', ['scl' => $scl]);
+            } else {
+                http_response_code(403);
+                exit;
+            }
         } else {
-            http_response_code(403);
-            exit;
+            return redirect()->route('contact.thanksAdmin');
         }
     }
     public function applypost($ptoken, $id, Request $request)
@@ -74,7 +79,8 @@ class ScholarshipController extends Controller
         $user = Auth::user();
         $utoken = $user->token;
         $user = User::where('token', $utoken)->first();
-        $scl = Pvtscl::where('token', $ptoken)->first();
+        $scl = Pvtscl::where('id', $id)->first();
+        $sclname = $scl['sclname'];
         $filepath1 = null;
         $filepath2 = null;
         $filepath3 = null;
@@ -86,41 +92,42 @@ class ScholarshipController extends Controller
         if ($request->hasFile('aadhar')) {
             $file1_name = time() . 'aadhar.' . "pdf";
             $request->file('aadhar')->move(public_path('users'), $file1_name);
-            $filepath1 = "/uploads/" . $file1_name;
+            $filepath1 = "/users/" . $file1_name;
         }
         if ($request->hasFile('caste_certificate')) {
             $file2_name = time() . 'caste_certificate.' . "pdf";
             $request->file('caste_certificate')->move(public_path('users'), $file2_name);
-            $filepath2 = "/uploads/" . $file2_name;
+            $filepath2 = "/users/" . $file2_name;
         }
 
         if ($request->hasFile('income_certificate')) {
             $file3_name = time() . 'income_certificate.' . "pdf";
             $request->file('income_certificate')->move(public_path('users'), $file3_name);
-            $filepath3 = "/uploads/" . $file3_name;
+            $filepath3 = "/users/" . $file3_name;
         }
         if ($request->hasFile('domicile_certificate')) {
             $file4_name = time() . 'domicile_certificate.' . "pdf";
             $request->file('domicile_certificate')->move(public_path('users'), $file4_name);
-            $filepath4 = "/uploads/" . $file4_name;
+            $filepath4 = "/users/" . $file4_name;
         }
         if ($request->hasFile('mark_sheets')) {
             $file5_name = time() . 'mark_sheets.' . "pdf";
             $request->file('mark_sheets')->move(public_path('users'), $file5_name);
-            $filepath5 = "/uploads/" . $file5_name;
+            $filepath5 = "/users/" . $file5_name;
         }
         if ($request->hasFile('fee_receipt')) {
             $file6_name = time() . 'fee_receipt.' . "pdf";
             $request->file('fee_receipt')->move(public_path('users'), $file6_name);
-            $filepath6 = "/uploads/" . $file6_name;
+            $filepath6 = "/users/" . $file6_name;
         }
         if ($request->hasFile('passport_photo')) {
             $file7_name = time() . '.' . 'pdf';
             $request->file('passport_photo')->move(public_path('users'), $file7_name);
-            $filepath7 = "/uploads/" . $file7_name;
+            $filepath7 = "/users/" . $file7_name;
         }
         $sclapplications = json_decode($scl->applications, true) ?? [];
         $newApplication = [
+            'schlname' => $sclname,
             'name' => $request['name'],
             'address' => $request['address'],
             'phoneno' => $request['phoneno'],
@@ -133,14 +140,14 @@ class ScholarshipController extends Controller
             'filepath5' => $filepath5,
             'filepath6' => $filepath6,
             'filepath7' => $filepath7,
+            'ptoken' => $ptoken
         ];
 
         $sclapplications[] = $newApplication;
         $scl['applications'] = json_encode($sclapplications);
-        $scl->save();
-
         $userapplications = json_decode($user->myapplications, true) ?? [];
         $newuserapplication = [
+            'schlname' => $sclname,
             'name' => $request['name'],
             'address' => $request['address'],
             'phoneno' => $request['phoneno'],
@@ -153,11 +160,66 @@ class ScholarshipController extends Controller
             'filepath5' => $filepath5,
             'filepath6' => $filepath6,
             'filepath7' => $filepath7,
+            'ptoken' => $ptoken
         ];
-
+        foreach ($userapplications as $existingApplication) {
+            if ($existingApplication['ptoken'] === $ptoken && $existingApplication['schlname'] === $sclname) {
+                return back()->withInput()->withErrors(['ptoken' => 'Ptoken already exists in another application.']);
+            }
+        }
+        $scl->save();
         $userapplications[] = $newuserapplication;
         $user['myapplications'] = json_encode($userapplications);
         $user->save();
         return redirect()->route('contact.thanks');
+    }
+    public function seeapplications()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            if ($user['dropdown'] == 'Admin') {
+                $token = $user['token'];
+                $myscl = Pvtscl::where('token', $token)->get();
+                $myapplications = $myscl->map(function ($entity) {
+                    $scholarshipName = $entity->sclname;
+                    $applications = optional($entity->applications);
+                    $resultArray = [];
+                    if ($scholarshipName) {
+                        $resultArray['scholarship_name'] = $scholarshipName;
+                    }
+                    if ($applications) {
+                        $resultArray['applications'] = $applications;
+                    }
+                    return $resultArray;
+                });
+                return view('scholarships.dispProvider', compact('myapplications'));
+            } else {
+                return redirect()->route('contact.thanks');
+            }
+        } else {
+            return view('home.index');
+        }
+    }
+    public function dispscluser(Request $request)
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            if ($user['dropdown'] == 'Client') {
+                $applications = json_decode($user->myapplications, true) ?? [];
+
+                // Fetch additional data for each application, e.g., sclname
+                foreach ($applications as &$application) {
+                    // Assuming you have a unique identifier for scl (e.g., token)
+                    $sclToken = $application['ptoken'];
+                    $scl = Pvtscl::where('token', $sclToken)->first();
+                    $application['sclname'] = $scl->sclname;
+                }
+                return view('scholarships.display', compact('applications'));
+            } else {
+                return redirect()->route('contact.thanksAdmin');
+            }
+        } else {
+            return view('home.index');
+        }
     }
 }

@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.3/dist/sweetalert2.all.min.js"></script>
 </head>
 
-<body>
+<body style="background-color:white;overflow-y: auto;overflow-x: hidden;">
 
     <!-- Navigation menu -->
     <nav class="navbar navbar-expand-lg bg-white">
@@ -34,9 +34,10 @@
                             Scholarships
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/scholarships') }}">All Scholarships</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/allscholarships') }}">All Scholarships</a></li>
                             <li><a class="dropdown-item" href="{{ url('/scholarships') }}">Government Scholarships</a></li>
                             <li><a class="dropdown-item" href="{{ route('pvtscl.index') }}">Private Institute Scholarships</a></li>
+                            <li><a class="dropdown-item" href="{{ route('dispscluser') }}">My applied Scholarships</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -94,6 +95,191 @@
         });
     </script>
     <!-- Navigation ends -->
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+            }
+
+            #container {
+                display: flex;
+                overflow: hidden;
+                width: calc(50% * var(--card-count, 7));
+                animation: scrollAnimation 20s linear infinite;
+            }
+
+            .card {
+                margin-top: 20px;
+                flex: 0 0 calc(100% / var(--card-count, 7));
+                box-sizing: border-box;
+                padding: 20px;
+                box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4) !important;
+                margin-right: 10px;
+                transition: transform 0.5s ease;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .card img {
+                max-width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+            }
+
+            @keyframes scrollAnimation {
+                0% {
+                    transform: translateX(calc(100% / var(--card-count, 7)));
+                }
+
+                7% {
+                    transform: translateX(calc(50% / var(--card-count, 7)));
+                }
+
+                14% {
+                    transform: translateX(calc(0% / var(--card-count, 7)));
+                }
+
+                21% {
+                    transform: translateX(calc(-50% / var(--card-count, 7)));
+                }
+
+                28% {
+                    transform: translateX(calc(-100% / var(--card-count, 7)));
+                }
+
+                35% {
+                    transform: translateX(calc(-150% / var(--card-count, 7)));
+                }
+
+                42% {
+                    transform: translateX(calc(-200% / var(--card-count, 7)));
+                }
+
+                49% {
+                    transform: translateX(calc(-250% / var(--card-count, 7)));
+                }
+
+                56% {
+                    transform: translateX(calc(-300% / var(--card-count, 7)));
+                }
+
+                63% {
+                    transform: translateX(calc(-350% / var(--card-count, 7)));
+                }
+
+                70% {
+                    transform: translateX(calc(-400% / var(--card-count, 7)));
+                }
+
+                77% {
+                    transform: translateX(calc(-450% / var(--card-count, 7)));
+                }
+
+                84% {
+                    transform: translateX(calc(-500% / var(--card-count, 7)));
+                }
+
+                91% {
+                    transform: translateX(calc(-550% / var(--card-count, 7)));
+                }
+
+                98% {
+                    transform: translateX(calc(-600% / var(--card-count, 7)));
+                }
+
+                99% {
+                    transform: translateX(calc(-650% / var(--card-count, 7)));
+                }
+
+                100% {
+                    transform: translateX(calc(-700% / var(--card-count, 7)));
+                }
+            }
+        </style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+        <div id="container" style="--card-count: 7;">
+            <div class="card">
+                <h3>PMSSS ( Prime Ministers Special Scholarship Scheme)</h3>
+                <p>Unlock your potential with PMSSS Scholarship. Apply now for a chance to win!</p>
+                <a class="btn btn-primary" href="https://www.aicte-india.org/bureaus/jk">Apply Now</a>
+            </div>
+
+            <div class="card">
+                <h3>SOF Girl Child Scholarship Scheme (G.C.S.S)</h3>
+                <p>Empowering girl students through our scholarship scheme. Don't miss this opportunity!</p>
+                <a class="btn btn-primary" href="https://sofworld.org/girl-child-scholarship-scheme-gcss">Apply Now</a>
+
+            </div>
+
+            <div class="card">
+                <h3>Education Scholarship Scheme for Army Personnel (ESSA)</h3>
+                <p>Avail the this scholarship. Seize the chance!</p>
+                <a class="btn btn-primary" href="https://scholarship.awesindia.com/">Apply Now</a>
+
+            </div>
+
+            <div class="card">
+                <h3>CSIR Innovation Award for School Children (CIASC)</h3>
+                <p>Showcase your innovation and win the prestigious CSIR Innovation Award. Apply now!</p>
+                <a class="btn btn-primary" href="https://www.csir.res.in/">Apply Now</a>
+
+            </div>
+
+            <div class="card">
+                <h3>Shiksha ki Udaan Scholarship program for girls</h3>
+                <p>Empower girls through our scholarship program. Join "Shiksha ki Udaan" today!</p>
+                <a class="btn btn-primary" href="https://iiflsamasta.com/">Apply Now</a>
+            </div>
+
+            <div class="card">
+                <h3>National Scholarship Scheme (SAKSHAM) HRDM</h3>
+                <p>Embark on your educational journey with the National Scholarship Scheme. Apply now!</p>
+                <a class="btn btn-primary" href="https://medhavionline.org/">Apply Now</a>
+            </div>
+
+            <div class="card">
+                <h3>NSP Post Matric Scholarships Minorities</h3>
+                <p>Scholarships for minorities. Secure your education with NSP Post Matric Scholarships!</p>
+                <a class="btn btn-primary" href="https://scholarships.gov.in/">Apply Now</a>
+            </div>
+        </div>
+
+        <script>
+            function applyNow(scholarshipName) {
+                alert('You are applying for: ' + scholarshipName);
+                // You can replace the alert with actual code to handle the application process
+            }
+        </script>
+
+        <script>
+            const container = document.getElementById('container');
+
+            container.addEventListener('mouseenter', () => {
+                container.style.animationPlayState = 'paused';
+            });
+
+            container.addEventListener('mouseleave', () => {
+                container.style.animationPlayState = 'running';
+            });
+        </script>
+
+    </body>
+
+    </html>
 
     <body>
 
@@ -113,9 +299,10 @@
                       height: 100%;
                       color: #0E2431;
                       bottom: 0;">
-                        <h1 style="margin-right:700px; margin-top:150px;font-size:40px;">Connecting Dreams</h1>
-                        <p style="margin-right:700px ;margin-top:50px;font-size:20px">Our platform bridges the gap between scholarship providers and ambitious students. Scholarship providers can easily list their opportunities, while students can effortlessly apply and manage their documentation on our website, streamlining the path to educational success.</p>
-                        <ol class="carousel-indicators" style="top:70%">
+
+                        <h1 style="margin-right:700px; margin-top:50px;font-size:40px;">Connecting Dreams</h1>
+                        <p style="margin-right:550px ;margin-top:50px;font-size:20px">Our platform bridges the gap between scholarship providers and ambitious students. Scholarship providers can easily list their opportunities, while students can effortlessly apply and manage their documentation on our website, streamlining the path to educational success.</p>
+                        <ol class="carousel-indicators" style="top:60%">
                             <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></li>
                             <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></li>
                             <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></li>
@@ -135,9 +322,9 @@
                       height: 100%;
                       color: #0E2431;
                       bottom: 0;">
-                        <h1 style="margin-right:500px;margin-top:150px;font-size:40px;">Fueling Opportunities for All</h1>
-                        <p style="margin-right:700px ;margin-top:50px;font-size:20px">Our inclusive platform invites scholarship providers to showcase their offerings and students to seize them. Providers can post scholarships, students can apply efficiently, and all documentation is managed seamlessly within our website. Join us on the journey to excellence.</p>
-                        <ol class="carousel-indicators" style="top:70%">
+                        <h1 style="margin-right:500px;margin-top:50px;font-size:40px;">Fueling Opportunities for All</h1>
+                        <p style="margin-right: 550px; ;margin-top:50px;font-size:20px">Our inclusive platform invites scholarship providers to showcase their offerings and students to seize them. Providers can post scholarships, students can apply efficiently, and all documentation is managed seamlessly within our website. Join us on the journey to excellence.</p>
+                        <ol class="carousel-indicators" style="top:60%">
                             <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" aria-label="Slide 1"></li>
                             <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="active" aria-current="true" aria-label="Slide 2"></li>
                             <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></li>
@@ -157,9 +344,9 @@
                       height: 100%;
                       color: #0E2431;
                       bottom: 0;">
-                        <h1 style="margin-right:700px;margin-top:150px;font-size:40px;">Empowering Education</h1>
-                        <p style="margin-right:700px ;margin-top:50px;font-size:20px">Our dynamic platform unites scholarship providers and students on a shared mission. Providers post scholarships, students apply seamlessly, and all documentation resides in one convenient place on our website. Join our community, and together, we empower educational aspirations.</p>
-                        <ol class="carousel-indicators" style="top:70%">
+                        <h1 style="margin-right:700px;margin-top:50px;font-size:40px;">Empowering Education</h1>
+                        <p style="margin-right:550px ;margin-top:50px;font-size:20px">Our dynamic platform unites scholarship providers and students on a shared mission. Providers post scholarships, students apply seamlessly, and all documentation resides in one convenient place on our website. Join our community, and together, we empower educational aspirations.</p>
+                        <ol class="carousel-indicators" style="top:60%">
                             <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" aria-label="Slide 1"></li>
                             <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></li>
                             <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" class="active" aria-current="true" aria-label="Slide 3"></li>

@@ -86,7 +86,7 @@
                             <?php $provider = $scholarship->token;
                             $id = $scholarship->id; ?>
                             <a class="btn btn-outline-primary learnMoreBtn" id="learnMoreBtn{{ $index }}">Learn More</a>
-                            <a class="btn btn-primary" id="submit" onclick="submit()">Apply</a>
+                            <a class="btn btn-primary" id="submit" onclick="submit('{{$provider}}', '{{$id}}')">Apply</a>
                         </div>
                     </div>
 
@@ -113,8 +113,8 @@
                 document.getElementById('popup' + index).style.display = 'none';
             }
 
-            function submit() {
-                window.location.href = "/apply/" + `{{$provider}}` + "/" + `{{$id}}`;
+            function submit(provider, id) {
+                window.location.href = "/apply/" + provider + "/" + id;
             }
         </script>
         @endforeach

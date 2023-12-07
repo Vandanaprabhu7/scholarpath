@@ -172,12 +172,13 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $scholarship->sclname }}</h5><br>
                                     <p class="card-text">{{ \Illuminate\Support\Str::limit($scholarship->eligibility, 150, $end='...') }}</p>
-                                    <!-- You can customize the card as needed -->
-                                    <a class="btn btn-outline-primary learnMoreBtn2" id="learnMoreBtn2{{ $index }}">Learn More</a>
-                                    <a class="btn btn-primary submitbtn" id="submit" onclick="submit()">Apply</a>
+                                    <?php $provider = $scholarship->token;
+                                    $id = $scholarship->id;
+                                    ?> <a class="btn btn-outline-primary learnMoreBtn2" id="learnMoreBtn2{{ $index }}">Learn More</a>
+                                    <a class="btn btn-primary submitbtn" id="submit" onclick="submit('{{$provider}}', '{{$id}}')">Apply</a>
                                     <script>
-                                        function submit() {
-                                            window.location.href = "/apply";
+                                        function submit(provider, id) {
+                                            window.location.href = "/apply/" + provider + "/" + id;
                                         }
                                     </script>
                                 </div>

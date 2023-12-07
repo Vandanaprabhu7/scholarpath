@@ -5,28 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Display Scholarships</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
 </head>
 
-<body>
-    <h1>Scholarship Applications</h1>
-
+<body class="container mt-5">
+    <h1 class="mb-4">Scholarship Applications</h1>
     @if (!empty($applications))
-    <ul>
-        @foreach ($applications as $key => $path)
-        <li>
-            @if (!is_null($path))
-            Filepath for {{ $key }}: localhost:8000{{$path }}
+    <ul class="list-group">
+        @foreach ($applications as $key => $application)
+        <li class="list-group-item">
+            <strong>Applied Scholarship name: {{ $application['schlname'] }}</strong>
+            <br><br><br>
+            <p><strong>Name:</strong> {{ $application['name'] }}</p>
+            <p><strong>Address:</strong> {{ $application['address'] }}</p>
+            <p><strong>Phone Number:</strong> {{ $application['phoneno'] }}</p>
+            <p><strong>Email:</strong> {{ $application['email'] }}</p>
+            <p><strong>Gender:</strong> {{ $application['gender'] }}</p>
+            <p><strong>Documents:</strong></p>
+            <p>
 
-            {{-- Add a link to show the PDF using PDF.js --}}
-            <a href="{{ $path }}" target="_blank">Show PDF</a>
+            <div class="mt-2">
+                @foreach ($application as $fileKey => $filePath)
+                @if ($fileKey !== 'name' && $fileKey !== 'address' && $fileKey !== 'phoneno'
+                && $fileKey !== 'email' && $fileKey !== 'gender' && !is_null($filePath)
+                && $fileKey !== 'ptoken' && $fileKey !== 'sclname' && $fileKey !== 'schlname')
+                @php
+                $customButtonNames = [
+                'filepath1' => 'Aadhar Card',
+                'filepath2' => 'Caste Certificate',
+                'filepath3' => 'Income Certificate',
+                'filepath4' => 'Domacile Certificate',
+                'filepath5' => 'Marks Sheet',
+                'filepath6' => 'Fee Receipt',
+                'filepath7' => 'Passport Photo',
+                // Add more custom names for other file paths
+                ];
+                @endphp
 
-            {{-- You can embed a PDF viewer or link to the file as needed --}}
-            @endif
+                @if (array_key_exists($fileKey, $customButtonNames))
+                <a href="{{ url($filePath) }}" class="btn btn-primary" target="_blank">
+                    {{ $customButtonNames[$fileKey] }}
+                </a>
+                @else
+                <a href="{{ url($filePath) }}" class="btn btn-primary" target="_blank">
+                    {{ ucfirst($fileKey) }}
+                </a>
+                @endif
+
+                @endif
+                @endforeach
+            </div>
         </li>
         @endforeach
     </ul>
     @else
-    <p>No applications available.</p>
+    <p class="alert alert-warning">No applications available.</p>
     @endif
 
     <!-- Script to show PDF using PDF.js -->

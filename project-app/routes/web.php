@@ -28,7 +28,6 @@ Route::delete('/profile', 'App\Http\Controllers\ProfileController@destroy')->nam
 Route::get('/thanks', 'App\Http\Controllers\HomeController@thanks')->name('contact.thanks');
 Route::get('/thanksAdmin', 'App\Http\Controllers\HomeController@thanksAdmin')->name('contact.thanksAdmin');
 Route::get('/scholarships', 'App\Http\Controllers\ScholarshipController@index')->name('scholarships.index');
-Route::get('/privatescholarships', 'App\Http\Controllers\ScholarshipController@privatescholarships');
 Route::get('/allscholarships', 'App\Http\Controllers\ScholarshipController@allscholarships');
 
 Route::get('/addScholarship', 'App\Http\Controllers\AdminController@addScholarship');
@@ -44,3 +43,6 @@ Route::get('/myscholarship', 'App\Http\Controllers\PvtsclController@myScholarshi
 
 Route::post('/logout', 'App\Http\Controllers\LoginController@logout')->name('logout');
 Route::get('/logout', 'App\Http\Controllers\LoginController@notcheck');
+Route::get('/disp', 'App\Http\Controllers\ScholarshipController@dispscluser')->name('dispscluser');
+Route::post('/disp', 'App\Http\Controllers\ScholarshipController@dispscluser');
+Route::get('/seeapplications', 'App\Http\Controllers\ScholarshipController@seeapplications');

@@ -15,11 +15,10 @@
 </nav>
 
 <!-- Navigation ends -->
-<br>
-<div class="w3-cursive" style="text-align:center;font-size:200%">LOGIN FORM</div>
 <div class="background-container">
 
-    <div class="login-form" id="form-login" style="padding-top:70px;top:40%">
+    <div class="login-form" id="form-login" style="padding-top:70px;top:43%">
+        <h2 style="text-align: center; color: #333;">Login Form</h2><br>
         <a href="/" class="close-button" style="top:3%;text-decoration: none;">x</a>
         <form action="{{ route('check') }}" method="post" class="log-form">
             {!! csrf_field() !!}
