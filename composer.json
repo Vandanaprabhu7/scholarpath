@@ -1,0 +1,15 @@
+{
+    "name": "manasa/scholarpath",
+    "autoload": {
+        "psr-4": {
+            "Manasa\\Scholarpath\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vandana Prabhu",
+            "email": "vandanaprabhu702@gmail.com"
+        }
+    ],
+    "require": {}
+}
